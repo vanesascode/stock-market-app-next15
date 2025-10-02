@@ -17,11 +17,14 @@ const NavItems = () => {
   return (
     <ul className="flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium">
       {NAV_ITEMS.map(({ href, label }) => (
-        <li key={href}>
+        <li
+          key={href}
+          className="hover:scale-110 hover:rotate-1 transition-all duration-300"
+        >
           <Link
             href={href}
             className={`hover:text-yellow-500 transition-colors ${
-              isActive(href) ? "text-grey-100" : ""
+              isActive(href) ? "text-gray-100" : ""
             }`}
           >
             {label}
