@@ -1,0 +1,30 @@
+# Configuration for development (watch) environment:
+
+services:
+  web:
+    build:
+      context: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    develop:
+      watch:
+        - path: ./package.json
+          action: rebuild
+        - path: ./package-lock.json
+          action: rebuild
+        - path: .
+          target: /app
+          action: sync
+# Configuration for production environment:
+
+# services:
+#   web:
+#     build:
+#       context: .
+#     environment:
+#       NODE_ENV: production
+#     ports:
+#       - 3000:3000
+
