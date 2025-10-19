@@ -31,6 +31,7 @@ This project includes the dependency `tw-animate-css` and imports it in `app/glo
 What is it? `tw-animate-css` is a small utility CSS package that exposes a set of ready‑to‑use animation utility classes that work nicely alongside Tailwind CSS. You can add subtle entrance, attention, and transition effects by applying simple classes to your elements.
 
 How to use it:
+
 - Add an animation utility to any element, e.g. `className="animate-fade-in"` to fade in, or `className="animate-bounce"` for a bouncing effect.
 - You can combine it with Tailwind utilities, e.g. `className="opacity-0 animate-fade-in duration-500"`.
 
@@ -47,6 +48,10 @@ export default function Example() {
 ```
 
 Note: If you don’t see animations, ensure your global styles are loaded (they are by default via `app/layout.tsx`) and that your browser does not reduce motion. Some animations may respect `prefers-reduced-motion`.
+
+## TradeView Widgets
+
+https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/
 
 ## Learn More
 
