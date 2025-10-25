@@ -1,25 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import NavItems from "./NavItems";
-import UserDropdown from "./UserDropdown";
 
 const Header = () => {
   return (
     <header className="sticky top-0 header">
-      <div className="container header-wrapper">
+      <div className="container flex justify-center items-center px-6 py-4 text-gray-500">
         <Link href="/">
           <Image
-            src="/assets/icons/logo.svg"
+            src="/assets/icons/logo.png"
             alt="Logo"
-            width={140}
+            width={200}
             height={32}
-            className="h-8 w-auto cursor-pointer"
+            className="h-9 w-auto cursor-pointer"
           />
         </Link>
-        <nav className="hidden sm:block">
-          <NavItems />
-        </nav>
-        <UserDropdown />
+        <nav className="hidden sm:block"></nav>
       </div>
     </header>
   );
