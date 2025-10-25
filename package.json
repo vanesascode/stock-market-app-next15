@@ -1,6 +1,6 @@
 {
-  "name": "next_stock_market",
-  "version": "0.1.0",
+  "name": "stock_view",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
