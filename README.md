@@ -84,8 +84,11 @@ Into this:
 "build": "next build --turbopack",
 ```
 
-And remove this line from the next.confif.ts file:
+And remove these lines from the next.confif.ts file:
 
 ```
 output: "export",
+images: {
+    unoptimized: true,
+  },
 ```
