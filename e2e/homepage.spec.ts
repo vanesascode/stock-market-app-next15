@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Homepage", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:3000");
+    await page.goto("/");
   });
 
   test("should have correct title", async ({ page }) => {
@@ -16,9 +16,9 @@ test.describe("Homepage", () => {
 
   test("should display TradingView widget containers", async ({ page }) => {
     // Wait for widgets to load (they load dynamically)
-    await page.waitForTimeout(2000);
 
     const widgetContainers = page.locator(".tradingview-widget-container");
+    await widgetContainers.first().waitFor({ state: "visible" });
     const count = await widgetContainers.count();
 
     // Homepage should have 4 widgets (Market Overview, Heatmap, Timeline, Market Data)
