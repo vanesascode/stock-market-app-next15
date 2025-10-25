@@ -67,3 +67,25 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Static Vs Server-Side Rendering (SSR)
+
+Now the app is set to be static.
+
+For Server-Side Rendering again, change this line in the package json:
+
+```
+"build": "next build",
+```
+
+Into this:
+
+```
+"build": "next build --turbopack",
+```
+
+And remove this line from the next.confif.ts file:
+
+```
+output: "export",
+```
