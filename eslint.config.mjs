@@ -21,6 +21,7 @@ const eslintConfig = [
       "jest.config.js",
       "verify-setup.js",
       "coverage/**",
+      "test-db-connection.js",
     ],
   },
 ];
