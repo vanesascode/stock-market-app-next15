@@ -19,7 +19,7 @@ const Header = () => {
         {/* <nav className="hidden sm:block">
           <NavItems />
         </nav> */}
-        <UserDropdown />
+        {/* <UserDropdown /> */}
       </div>
     </header>
   );
