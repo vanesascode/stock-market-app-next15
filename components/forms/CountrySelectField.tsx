@@ -21,6 +21,7 @@ import { Label } from "@/components/ui/label";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import countryList from "react-select-country-list";
+import * as flags from "country-flag-icons/react/3x2";
 
 type CountrySelectProps = {
   name: string;
@@ -39,16 +40,16 @@ const CountrySelect = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  // Get country options with flags
   const countries = countryList().getData();
 
-  // Helper function to get flag emoji
-  const getFlagEmoji = (countryCode: string) => {
-    const codePoints = countryCode
-      .toUpperCase()
-      .split("")
-      .map((char) => 127397 + char.charCodeAt(0));
-    return String.fromCodePoint(...codePoints);
+  const getFlagComponent = (countryCode: string) => {
+    const code = countryCode.toUpperCase();
+    const FlagComponent = flags[code as keyof typeof flags];
+
+    if (FlagComponent) {
+      return <FlagComponent className="w-5 h-4 inline-block shrink-0" />;
+    }
+    return <span className="w-5 h-4 inline-block">🏳️</span>;
   };
 
   return (
@@ -62,7 +63,7 @@ const CountrySelect = ({
         >
           {value ? (
             <span className="flex items-center gap-2">
-              <span>{getFlagEmoji(value)}</span>
+              {getFlagComponent(value)}
               <span>{countries.find((c) => c.value === value)?.label}</span>
             </span>
           ) : (
@@ -72,8 +73,10 @@ const CountrySelect = ({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-full p-0 bg-gray-800 border-gray-600"
+        className="bg-gray-800 border-gray-600"
         align="start"
+        sideOffset={4}
+        style={{ width: "var(--radix-popover-trigger-width)" }}
       >
         <Command className="bg-gray-800 border-gray-600">
           <CommandInput
@@ -102,7 +105,7 @@ const CountrySelect = ({
                     )}
                   />
                   <span className="flex items-center gap-2">
-                    <span>{getFlagEmoji(country.value)}</span>
+                    {getFlagComponent(country.value)}
                     <span>{country.label}</span>
                   </span>
                 </CommandItem>

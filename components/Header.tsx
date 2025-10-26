@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import NavItems from "@/components/NavItems";
+import UserDropdown from "@/components/UserDropdown";
 
 const Header = () => {
   return (
     <header className="sticky top-0 header">
-      <div className="container flex justify-center items-center px-6 py-4 text-gray-500">
+      <div className="container flex justify-between items-center px-6 py-4 text-gray-500">
         <Link href="/">
           <Image
             src="/assets/icons/logo.png"
@@ -14,7 +16,10 @@ const Header = () => {
             className="h-9 w-auto cursor-pointer"
           />
         </Link>
-        <nav className="hidden sm:block"></nav>
+        {/* <nav className="hidden sm:block">
+          <NavItems />
+        </nav> */}
+        <UserDropdown />
       </div>
     </header>
   );

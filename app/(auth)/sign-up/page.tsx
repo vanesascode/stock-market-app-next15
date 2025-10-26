@@ -9,6 +9,8 @@ import {
   PREFERRED_INDUSTRIES,
   RISK_TOLERANCE_OPTIONS,
 } from "@/lib/constants";
+import { CountrySelectField } from "@/components/forms/CountrySelectField";
+import FooterLink from "@/components/forms/FooterLink";
 
 const SignUp = () => {
   const {
@@ -45,7 +47,7 @@ const SignUp = () => {
 
   return (
     <>
-      <h1 className="form-title">Sign Up & Personalize</h1>
+      <h1 className="form-title">Sign Up</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <InputField
@@ -54,7 +56,13 @@ const SignUp = () => {
           placeholder="John Doe"
           register={register}
           error={errors.fullName}
-          validation={{ required: "Full name is required", minLength: 2 }}
+          validation={{
+            required: "Full name is required",
+            minLength: {
+              value: 2,
+              message: "Full name must be at least 2 characters",
+            },
+          }}
         />
 
         <InputField
@@ -64,9 +72,11 @@ const SignUp = () => {
           register={register}
           error={errors.email}
           validation={{
-            required: "Email name is required",
-            pattern: /^\w+@\w+\.\w+$/,
-            message: "Email address is required",
+            required: "Email is required",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Please enter a valid email address",
+            },
           }}
         />
 
@@ -77,16 +87,22 @@ const SignUp = () => {
           type="password"
           register={register}
           error={errors.password}
-          validation={{ required: "Password is required", minLength: 8 }}
+          validation={{
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters",
+            },
+          }}
         />
 
-        {/* <CountrySelectField
+        <CountrySelectField
           name="country"
           label="Country"
           control={control}
           error={errors.country}
           required
-        /> */}
+        />
 
         <SelectField
           name="investmentGoals"
@@ -126,11 +142,11 @@ const SignUp = () => {
           {isSubmitting ? "Creating Account" : "Start Your Investing Journey"}
         </Button>
 
-        {/* <FooterLink
+        <FooterLink
           text="Already have an account?"
           linkText="Sign in"
           href="/sign-in"
-        /> */}
+        />
       </form>
     </>
   );

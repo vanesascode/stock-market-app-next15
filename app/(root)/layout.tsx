@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import NavItems from "@/components/NavItems";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
