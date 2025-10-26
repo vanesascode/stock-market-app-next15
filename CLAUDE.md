@@ -37,13 +37,15 @@ Development server runs on http://localhost:3000
 
 - `app/` - Next.js App Router pages and layouts
   - `app/(root)/page.tsx` - Homepage with market overview
+  - `app/(auth)/sign-up/page.tsx` - Sign up form with personalization
   - `app/layout.tsx` - Root layout with metadata
 - `components/` - Reusable React components
-  - `components/ui/` - Radix UI wrapper components (button, avatar, dropdown-menu)
+  - `components/ui/` - Radix UI wrapper components (button, avatar, dropdown-menu, popover, command, select)
+  - `components/forms/` - Form field components (InputField, SelectField, CountrySelectField)
 - `hooks/` - Custom React hooks
   - `useTradingViewWidget.tsx` - Manages TradingView widget lifecycle with dynamic script injection
 - `lib/` - Utilities and constants
-  - `constants.ts` - Widget configurations and stock symbols
+  - `constants.ts` - Widget configurations, stock symbols, and form options
   - `utils.ts` - Helper utilities (cn function for class merging)
 - `public/assets/` - Static icons and images
 
@@ -67,6 +69,15 @@ Development server runs on http://localhost:3000
 - Radix UI primitives wrapped with Tailwind classes
 - class-variance-authority (CVA) for variant management
 - `cn()` utility (clsx + tailwind-merge) for conditional classes
+
+**Form Components:**
+
+- React Hook Form for form state management and validation
+- Reusable field components: InputField, SelectField, CountrySelectField
+- CountrySelectField uses Radix Popover + Command components with flag emoji display
+- PopoverContent width matches trigger using CSS variable `--radix-popover-trigger-width`
+- Country data from `react-select-country-list` library
+- Form styling through custom Tailwind classes (`.form-label`, `.form-input`, `.select-trigger`, `.country-select-*`)
 
 ### Styling System
 
@@ -110,7 +121,9 @@ Multiple widget types configured in constants:
 - React 19.1.0
 - TypeScript 5 (strict mode)
 - Tailwind CSS 4
-- Radix UI components (@radix-ui/react-\*)
+- Radix UI components (@radix-ui/react-*)
+- React Hook Form for form management
+- react-select-country-list for country selection
 - Lucide React for icons
 - TradingView widgets (external CDN)
 
@@ -120,6 +133,8 @@ Multiple widget types configured in constants:
 
 - Homepage with TradingView market overview widget
 - Header with navigation and user dropdown
+- Sign-up form with user personalization (country, investment goals, risk tolerance, preferred industry)
+- Form validation with React Hook Form
 - Responsive design (mobile/desktop)
 - Dark mode styling
 
